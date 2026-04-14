@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "77d9e0579f10e1e7",
+    "type": "split",
+    "children": [
+      {
+        "id": "0d4b6e3cdb7a3d30",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d3a2eef63359b50f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/domains/pkm.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pkm"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8ffd59cdbe0afd0d",
+    "type": "split",
+    "children": [
+      {
+        "id": "80d2c1625db94ee1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45f93e2dbbaa19a8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "747800d6778a13ae",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "41f2865e80bbfab3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4a7cd71ac2697816",
+    "type": "split",
+    "children": [
+      {
+        "id": "5a852158fb99d8ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3c7b17402b7830f4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "wiki/domains/pkm.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for pkm"
+            }
+          },
+          {
+            "id": "522b0f6b869db136",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "wiki/domains/pkm.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from pkm"
+            }
+          },
+          {
+            "id": "d2afb9097288da30",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "aeaf0ad6b75e217f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "ac0736dd7d6eae45",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "wiki/domains/pkm.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of pkm"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "d3a2eef63359b50f",
+  "lastOpenFiles": [
+    "wiki/domains/entertainment.md",
+    "wiki/concepts/second-brain.md",
+    "wiki/concepts/franchise-fatigue.md",
+    "wiki/concepts/experience-economy.md",
+    "Clippings/(1) Defileo🔮 on X \"Claude + Obsidian have to be illegal\".md",
+    "wiki/entities/joseph-pine.md",
+    "wiki/entities/ted-sarandos.md",
+    "wiki/entities/charles-melcher.md",
+    "wiki/concepts/creator-economy.md",
+    "wiki/concepts/ai-slop.md",
+    "wiki/concepts/immersive-entertainment.md",
+    "wiki/queries/future-of-entertainment-expert-predictions-2026.md",
+    "wiki/queries/audience-trends-movies-sports-2024.md",
+    "wiki/log.md",
+    "wiki/domains/pkm.md",
+    "wiki/concepts/rag.md",
+    "wiki/concepts/morning-digest-automation.md",
+    "wiki/concepts/memex.md",
+    "wiki/concepts/llm-wiki-pattern.md",
+    "wiki/_templates/source.md",
+    "wiki/_templates/entity.md",
+    "wiki/_templates/concept.md",
+    "wiki/entities/vannevar-bush.md",
+    "wiki/entities/obsidian-web-clipper.md",
+    "wiki/entities/claude-code.md",
+    "wiki/entities/obsidian.md",
+    "wiki/queries",
+    "wiki/domains",
+    "wiki/concepts",
+    "wiki/entities",
+    "wiki/sources",
+    "Clippings",
+    "raw/assets",
+    "raw",
+    "wiki/_templates",
+    "wiki"
+  ]
+}
