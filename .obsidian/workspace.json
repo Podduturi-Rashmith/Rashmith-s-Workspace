@@ -4,21 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "0d4b6e3cdb7a3d30",
+        "id": "13e6cb7eb44f7ea4",
         "type": "tabs",
         "children": [
           {
-            "id": "d3a2eef63359b50f",
+            "id": "4f21732a877a6902",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "wiki/domains/pkm.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.base",
+                "viewName": "Table"
               },
-              "icon": "lucide-file",
-              "title": "pkm"
+              "icon": "lucide-table",
+              "title": "Untitled"
             }
           }
         ]
@@ -94,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wiki/domains/pkm.md",
+                "file": "ideas/agriculture-ai/EXECUTIVE-BRIEFING.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for pkm"
+              "title": "Backlinks for EXECUTIVE-BRIEFING"
             }
           },
           {
@@ -113,12 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wiki/domains/pkm.md",
+                "file": "ideas/agriculture-ai/EXECUTIVE-BRIEFING.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from pkm"
+              "title": "Outgoing links from EXECUTIVE-BRIEFING"
             }
           },
           {
@@ -156,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wiki/domains/pkm.md",
+                "file": "ideas/agriculture-ai/EXECUTIVE-BRIEFING.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of pkm"
+              "title": "Outline of EXECUTIVE-BRIEFING"
             }
           }
         ]
@@ -183,43 +182,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "d3a2eef63359b50f",
+  "active": "4f21732a877a6902",
   "lastOpenFiles": [
+    "Untitled 1.canvas",
+    "Untitled.base",
+    "Untitled.canvas",
+    "CLAUDE.md",
+    "Untitled 1.base",
+    "Untitled",
+    "2026-06-02.md",
+    "ideas/agriculture-ai/EXECUTIVE-BRIEFING.md",
+    "ideas/agriculture-ai/ai-agriculture-overview.md",
+    "ideas/entertainment-shared-reality/cost-revenue-analysis.md",
+    "ideas/agriculture-ai/key-statistics-summary.md",
+    "ideas/agriculture-ai/FORMAL-RESEARCH-REPORT.md",
+    "Clippings/Agriculture AI Research/John Deere Acquires Sentera.md",
+    "Clippings/Agriculture AI Research",
+    "Clippings/Claude + Obsidian Article/(1) Defileo🔮 on X \"Claude + Obsidian have to be illegal\".md",
+    "Clippings/Claude + Obsidian Article",
+    "ideas/agriculture-ai/SOURCES-CITATIONS.md",
+    "ideas/agriculture-ai/research-outline-comprehensive.md",
+    "wiki/log.md",
+    "wiki/domains/pkm.md",
+    "ideas/README.md",
+    "ideas/agriculture-ai/Memory.md",
+    "ideas/entertainment-shared-reality/Memory.md",
+    "ideas/entertainment-shared-reality",
+    "ideas/agriculture-ai",
+    "ideas",
     "wiki/domains/entertainment.md",
     "wiki/concepts/second-brain.md",
     "wiki/concepts/franchise-fatigue.md",
     "wiki/concepts/experience-economy.md",
-    "Clippings/(1) Defileo🔮 on X \"Claude + Obsidian have to be illegal\".md",
     "wiki/entities/joseph-pine.md",
     "wiki/entities/ted-sarandos.md",
     "wiki/entities/charles-melcher.md",
     "wiki/concepts/creator-economy.md",
     "wiki/concepts/ai-slop.md",
-    "wiki/concepts/immersive-entertainment.md",
-    "wiki/queries/future-of-entertainment-expert-predictions-2026.md",
-    "wiki/queries/audience-trends-movies-sports-2024.md",
-    "wiki/log.md",
-    "wiki/domains/pkm.md",
-    "wiki/concepts/rag.md",
-    "wiki/concepts/morning-digest-automation.md",
-    "wiki/concepts/memex.md",
-    "wiki/concepts/llm-wiki-pattern.md",
-    "wiki/_templates/source.md",
-    "wiki/_templates/entity.md",
-    "wiki/_templates/concept.md",
-    "wiki/entities/vannevar-bush.md",
-    "wiki/entities/obsidian-web-clipper.md",
-    "wiki/entities/claude-code.md",
-    "wiki/entities/obsidian.md",
     "wiki/queries",
-    "wiki/domains",
-    "wiki/concepts",
-    "wiki/entities",
-    "wiki/sources",
-    "Clippings",
-    "raw/assets",
-    "raw",
-    "wiki/_templates",
-    "wiki"
+    "wiki/domains"
   ]
 }
