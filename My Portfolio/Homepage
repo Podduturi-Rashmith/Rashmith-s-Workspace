@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — [Your Title]</title>
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --fg:#f5f5f5;
+    --muted:#9a9a9a;
+    --accent:#7CFFB2;
+    --card:#141414;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:'Poppins',Arial,sans-serif;overflow-x:hidden;}
+
+  /* NAV */
+  header{
+    position:fixed;top:16px;left:50%;transform:translateX(-50%);
+    display:flex;align-items:center;justify-content:space-between;
+    width:min(90%,900px);padding:10px 20px;border-radius:40px;
+    background:rgba(20,20,20,0.7);backdrop-filter:blur(10px);
+    z-index:100;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .avatar{width:36px;height:36px;border-radius:50%;background:#555;position:relative;}
+  .avatar::after{content:'';position:absolute;bottom:-2px;right:-2px;width:10px;height:10px;background:#4CD964;border-radius:50%;border:2px solid var(--bg);}
+  nav a{color:var(--fg);text-decoration:none;margin-left:20px;font-size:14px;opacity:0.85;}
+  nav a:hover{opacity:1;}
+
+  /* HERO */
+  .hero{
+    height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  }
+  .hero h1{font-size:clamp(48px,9vw,110px);font-weight:600;}
+  .cursor{display:inline-block;width:4px;background:var(--fg);margin-left:6px;animation:blink 0.9s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero p{max-width:600px;margin-top:20px;color:var(--muted);font-size:16px;line-height:1.7;}
+  .scroll-cue{margin-top:60px;font-size:12px;letter-spacing:2px;color:var(--muted);}
+  .scroll-line{width:1px;height:40px;background:var(--muted);margin:10px auto 0;animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+  /* MARQUEE */
+  .marquee-wrap{overflow:hidden;background:var(--accent);color:#000;padding:22px 0;white-space:nowrap;}
+  .marquee{display:inline-flex;animation:scroll 22s linear infinite;}
+  .marquee-wrap:hover .marquee{animation-play-state:paused;}
+  .marquee span{font-size:32px;font-weight:600;margin:0 30px;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out, transform .6s ease-out;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  section{padding:120px 8%;}
+
+  /* INTRO */
+  .intro{display:grid;grid-template-columns:1fr 2fr;gap:60px;}
+  .intro h2{font-size:40px;font-weight:600;}
+  .intro ul{list-style:none;margin-top:30px;color:var(--muted);}
+  .intro li{margin-bottom:12px;padding-left:16px;border-left:1px solid #333;}
+  .intro-card{
+    background:var(--card);border-radius:20px;padding:50px;
+    background-image:radial-gradient(circle,#2a2a2a 1px,transparent 1px);
+    background-size:18px 18px;
+  }
+  .intro-card p{font-size:28px;line-height:1.6;color:#ddd;}
+
+  /* CARDS / WORK */
+  .section-head{margin-bottom:50px;}
+  .section-head h2{font-size:44px;font-weight:600;}
+  .section-head p{color:var(--muted);max-width:500px;margin-top:12px;}
+
+  .carousel{position:relative;overflow:hidden;}
+  .carousel-track{display:flex;gap:24px;transition:transform .5s ease;}
+  .card{
+    flex:0 0 320px;background:var(--card);border-radius:16px;overflow:hidden;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .card:hover{transform:scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,0.4);}
+  .card-img{height:200px;background:linear-gradient(135deg,#333,#111);}
+  .card-body{padding:20px;}
+  .card-body h3{font-size:18px;margin-bottom:8px;}
+  .tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+  .tag{font-size:11px;padding:4px 10px;border:1px solid #333;border-radius:20px;color:var(--muted);}
+  .counter{font-size:13px;color:var(--muted);margin-bottom:20px;}
+  .carousel-nav{display:flex;gap:10px;margin-top:20px;}
+  .carousel-nav button{width:40px;height:40px;border-radius:50%;border:1px solid #333;background:transparent;color:var(--fg);cursor:pointer;}
+  .carousel-nav button:hover{background:#222;}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+
+  /* CTA */
+  .cta{text-align:center;}
+  .cta h2{font-size:clamp(40px,7vw,80px);font-weight:600;}
+
+  /* FOOTER */
+  footer{padding:80px 8% 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;border-top:1px solid #1f1f1f;}
+  footer h4{color:var(--muted);font-size:13px;margin-bottom:16px;letter-spacing:1px;}
+  footer a{display:block;color:var(--fg);text-decoration:none;margin-bottom:10px;opacity:0.85;}
+  footer a:hover{opacity:1;}
+  .copyright{grid-column:1/-1;margin-top:40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="avatar"></div>
+    <span>[Your Name]</span>
+  </div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#playground">Playground</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="typewriter">&nbsp;<span class="cursor"></span></h1>
+  <p>[One or two sentence intro about who you are and what you do.]</p>
+  <div class="scroll-cue">SCROLL<div class="scroll-line"></div></div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee" id="marquee"></div>
+</div>
+
+<section class="intro reveal">
+  <div>
+    <h2>Intro</h2>
+    <ul>
+      <li>For anyone</li>
+      <li>Recruiters</li>
+      <li>Designers</li>
+      <li>Engineers</li>
+    </ul>
+  </div>
+  <div class="intro-card">
+    <p>[Your longer introduction paragraph goes here — a few sentences about your background, approach, and what drives your work.]</p>
+  </div>
+</section>
+
+<section id="work" class="reveal">
+  <div class="section-head">
+    <h2>Featured Work</h2>
+    <p>[Short description of the kind of work you feature here.]</p>
+  </div>
+  <div class="counter" id="counter">01 / 04</div>
+  <div class="carousel">
+    <div class="carousel-track" id="track">
+      <div class="card"><div class="card-img"></div><div class="card-body"><h3>[Project One]</h3><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+      <div class="card"><div class="card-img"></div><div class="card-body"><h3>[Project Two]</h3><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+      <div class="card"><div class="card-img"></div><div class="card-body"><h3>[Project Three]</h3><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+      <div class="card"><div class="card-img"></div><div class="card-body"><h3>[Project Four]</h3><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+    </div>
+  </div>
+  <div class="carousel-nav">
+    <button id="prev">←</button>
+    <button id="next">→</button>
+  </div>
+</section>
+
+<section id="playground" class="reveal">
+  <div class="section-head">
+    <h2>Playground</h2>
+    <p>[Short description of self-initiated projects/experiments.]</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="card-img"></div><div class="card-body"><h3>[Side Project A]</h3><div class="tags"><span class="tag">Tag</span></div></div></div>
+    <div class="card"><div class="card-img"></div><div class="card-body"><h3>[Side Project B]</h3><div class="tags"><span class="tag">Tag</span></div></div></div>
+  </div>
+</section>
+
+<section class="cta reveal" id="about">
+  <h2>Let's Connect!</h2>
+</section>
+
+<footer>
+  <div>
+    <h4>MENU</h4>
+    <a href="#top">Home</a>
+    <a href="#work">Work</a>
+    <a href="#playground">Playground</a>
+    <a href="#about">About</a>
+  </div>
+  <div>
+    <h4>CONNECT</h4>
+    <a href="#">LinkedIn ↗</a>
+    <a href="#">Email</a>
+  </div>
+  <div>
+    <h4>SAY HELLO</h4>
+    <a href="#">[your@email.com]</a>
+    <span style="color:var(--muted);font-size:13px;">Available for work — [City, State]</span>
+  </div>
+  <div class="copyright">
+    <span>© 2026 [Your Name] — All rights reserved</span>
+    <a href="#top" style="opacity:1;">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  // Typewriter effect
+  const words = ["[Your Title]", "[Skill One]", "[Skill Two]", "[Skill Three]"];
+  const el = document.getElementById('typewriter');
+  let wi = 0, ci = 0, deleting = false;
+  function type(){
+    const word = words[wi];
+    el.firstChild.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+    if(!deleting && ci === word.length + 1){ deleting = true; setTimeout(type, 1200); return; }
+    if(deleting && ci < 0){ deleting = false; wi = (wi+1) % words.length; ci = 0; }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  type();
+
+  // Marquee content (duplicated for seamless loop)
+  const skills = ["Product Design","Creative Technology","AI Prototyping","Web Design","Brand Systems"];
+  const marqueeHTML = skills.map(s => `<span>${s} ✳</span>`).join('');
+  document.getElementById('marquee').innerHTML = marqueeHTML + marqueeHTML;
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // Carousel
+  const track = document.getElementById('track');
+  const cards = track.children;
+  const counter = document.getElementById('counter');
+  let index = 0;
+  function update(){
+    const cardWidth = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+    counter.textContent = `0${index+1} / 0${cards.length}`;
+  }
+  document.getElementById('next').onclick = ()=>{ index = (index+1) % cards.length; update(); };
+  document.getElementById('prev').onclick = ()=>{ index = (index-1+cards.length) % cards.length; update(); };
+</script>
+
+</body>
+</html>
