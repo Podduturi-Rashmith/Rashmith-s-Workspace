@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rashmith Reddy Podduturi — Technical Program Manager & AI Delivery Lead</title>
+<meta name="description" content="Rashmith Reddy Podduturi — Technical Program Manager & AI Delivery Lead. Turning ambiguity into shipped systems across AI pipelines, streaming platforms, and cloud infrastructure.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rashmith Reddy Podduturi — Technical Program Manager & AI Delivery Lead">
+<meta property="og:description" content="Turning ambiguity into shipped systems across AI pipelines, streaming platforms, and cloud infrastructure.">
+<meta property="og:url" content="https://www.rashmith.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='70' font-family='Arial,sans-serif' font-size='58' font-weight='700' fill='%237CFFB2' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root{
     --bg:#0a0a0a;
@@ -76,6 +82,8 @@
   .cursor-dot.is-active{width:64px;height:64px;background:#ffffff;box-shadow:0 0 0 1px rgba(0,0,0,0.08),0 0 30px rgba(255,255,255,0.22);}
   .cursor-label{font-size:12px;color:#050505;opacity:0;transition:opacity 0.25s ease;white-space:nowrap;font-weight:600;letter-spacing:0.04em;}
   .cursor-dot.is-active .cursor-label{opacity:1;}
+  .cursor-dot.is-project{width:150px;height:150px;background:rgba(10,10,10,0.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 0 1px rgba(255,255,255,0.05),0 20px 60px rgba(0,0,0,0.45);}
+  .cursor-dot.is-project .cursor-label{color:#ffffff;font-size:14px;letter-spacing:0.06em;white-space:normal;text-align:center;line-height:1.4;max-width:110px;}
   body.has-custom-cursor{cursor:none;}
   /* MARQUEE */
   .marquee-wrap{overflow:hidden;background:var(--accent);color:#000;padding:22px 0;white-space:nowrap;}
@@ -106,27 +114,28 @@
   .section-head{margin-bottom:50px;}
   .section-head h2{font-size:44px;font-weight:600;}
   .section-head p{color:var(--muted);max-width:600px;margin-top:12px;line-height:1.7;}
+  .eyebrow-line{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+  .eyebrow-line::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
 
   .case-study-list{display:grid;gap:20px;}
-  .case-study{
-    background:var(--card);border:1px solid #232323;border-radius:20px;padding:28px 30px;
-    display:grid;gap:16px;box-shadow:0 16px 40px rgba(0,0,0,0.18);
+  .case-study-card{
+    display:grid;gap:28px;text-decoration:none;color:inherit;
+    background:var(--card);border:1px solid #232323;border-radius:24px;padding:20px;
+    box-shadow:0 16px 40px rgba(0,0,0,0.18);
+    transition:border-color .3s ease, box-shadow .3s ease;
   }
-  .case-study-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
-  .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
-  .case-study h3{font-size:24px;margin-bottom:6px;}
-  .case-study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
-  .case-study-block{background:rgba(255,255,255,0.03);border:1px solid #2a2a2a;border-radius:14px;padding:16px;}
-  .case-study-block h4{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-  .case-study-block p{color:#d9d9d9;line-height:1.6;font-size:15px;}
-  .outcome{color:var(--accent);font-weight:600;}
-  .proof-point{background:linear-gradient(135deg, rgba(124,255,178,0.14), rgba(124,255,178,0.02));border:1px solid rgba(124,255,178,0.2);border-radius:22px;padding:32px;display:grid;gap:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);}
-  .proof-point ul{list-style:none;display:grid;gap:10px;color:#d9d9d9;}
-  .proof-point li{padding-left:16px;border-left:1px solid rgba(124,255,178,0.35);}
-  .counter{font-size:13px;color:var(--muted);margin-bottom:20px;}
-  .carousel-nav{display:flex;gap:10px;margin-top:20px;}
-  .carousel-nav button{width:40px;height:40px;border-radius:50%;border:1px solid #333;background:transparent;color:var(--fg);cursor:pointer;}
-  .carousel-nav button:hover{background:#222;}
+  .case-study-card:hover{border-color:#333;box-shadow:0 24px 60px rgba(0,0,0,0.3);}
+  .case-study-thumb{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#0d0d0d;}
+  .case-study-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transform:scale(1);transition:transform .7s cubic-bezier(.22,1,.36,1);}
+  .case-study-card:hover .case-study-thumb img{transform:scale(1.08);}
+  .case-study-thumb::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .4s ease;}
+  .case-study-card:hover .case-study-thumb::after{background:rgba(0,0,0,0.18);}
+  .case-study-info{display:grid;gap:14px;padding:4px 10px 12px;}
+  .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);}
+  .case-study-info h3{font-size:26px;font-weight:600;}
+  .case-study-info p{color:var(--muted);line-height:1.7;font-size:15px;max-width:640px;}
+  .case-study-tags{display:flex;gap:10px;flex-wrap:wrap;}
+  .case-study-tag{border:1px solid #333;border-radius:999px;padding:8px 16px;font-size:13px;opacity:0.85;}
 
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
 
@@ -161,8 +170,7 @@
     </div>
   </div>
   <nav>
-    <a href="#work">Work</a>
-    <a href="#playground">Playground</a>
+    <a href="#work">Case Study</a>
     <a href="#about">About</a>
   </nav>
 </header>
@@ -192,112 +200,29 @@
   </div>
 </section>
 
+
 <section id="work" class="reveal">
   <div class="section-head">
-    <h2>Program Case Studies</h2>
-    <p>These are the kinds of cross-functional programs I’ve led end to end: turning ambiguity into scope, aligning technical and business stakeholders, and shipping measurable outcomes.</p>
+    <h2>Case Study</h2>
+    <span class="eyebrow-line">Since 2025</span>
+    <p>Selected program and platform work focused on turning ambiguous delivery goals into scalable execution.</p>
   </div>
   <div class="case-study-list">
-    <article class="case-study">
-      <div class="case-study-top">
-        <div>
-          <div class="eyebrow">Case Study 01</div>
-          <h3>Platform launch moved from reactive to predictable</h3>
-        </div>
-        <span class="outcome">Shipped 2 quarters early</span>
+    <a class="case-study-card" href="../Design/real-time-multi-platform-video-integration.html" data-cursor-label="View Project" data-cursor-variant="project">
+      <div class="case-study-thumb">
+        <img src="assets/case-study-video-integration.png" alt="Unified Video Session Service platform architecture" loading="lazy">
       </div>
-      <div class="case-study-grid">
-        <div class="case-study-block">
-          <h4>Before</h4>
-          <p>A new initiative arrived with unclear scope, competing stakeholder asks, and no shared delivery plan. Teams were working in parallel but with conflicting priorities.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>My role</h4>
-          <p>I defined the program scope, created a technical roadmap, sequenced dependencies, and established weekly decision forums across engineering, design, data science, and legal.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>Approach</h4>
-          <p>I translated ambiguous requirements into a phased delivery plan, introduced lightweight risk tracking, and used SQL and Python-based reporting to surface tradeoffs and readiness signals.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>Outcome</h4>
-          <p>The work launched ahead of schedule, reduced delivery ambiguity, and gave leadership a clearer view of milestones, risks, and dependencies.</p>
+      <div class="case-study-info">
+        <div class="eyebrow">Engineering Case Study</div>
+        <h3>Real-Time Multi-Platform Video Integration</h3>
+        <p>Unifying playback, licensing, and session logic across web, native, CTV, and partner embeds into one shared platform layer.</p>
+        <div class="case-study-tags">
+          <span class="case-study-tag">Program Management</span>
+          <span class="case-study-tag">Streaming Platform</span>
+          <span class="case-study-tag">Cross-Functional Delivery</span>
         </div>
       </div>
-    </article>
-
-    <article class="case-study">
-      <div class="case-study-top">
-        <div>
-          <div class="eyebrow">Case Study 02</div>
-          <h3>Reliability work reduced operational disruption</h3>
-        </div>
-        <span class="outcome">Reduced incident rate by 38%</span>
-      </div>
-      <div class="case-study-grid">
-        <div class="case-study-block">
-          <h4>Before</h4>
-          <p>Recurring incidents were creating trust issues with customers and consuming engineering cycles that should have gone into roadmap delivery.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>My role</h4>
-          <p>I led the problem framing, built the cross-functional response plan, and coordinated with product, engineering, and support to prioritize the most impactful fixes.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>Approach</h4>
-          <p>I created a structured postmortem loop, tied remediation work to measurable reliability goals, and used CI/CD and cloud platform workflows to accelerate safe rollout.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>Outcome</h4>
-          <p>We reduced incident frequency materially, improved recovery time, and created a repeatable operating rhythm for future launch readiness.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="case-study">
-      <div class="case-study-top">
-        <div>
-          <div class="eyebrow">Case Study 03</div>
-          <h3>Revenue launch was unblocked through clear execution management</h3>
-        </div>
-        <span class="outcome">Unblocked a $6M launch</span>
-      </div>
-      <div class="case-study-grid">
-        <div class="case-study-block">
-          <h4>Before</h4>
-          <p>The launch had multiple moving parts, unclear ownership, and a high risk of schedule slip across compliance, product, and engineering teams.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>My role</h4>
-          <p>I drove the operating cadence, clarified decision rights, and kept the team aligned on scope, timeline, and risk tradeoffs under executive visibility.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>Approach</h4>
-          <p>I built a decision log, introduced milestone checkpoints, and aligned stakeholders around a common narrative for what mattered most for launch success.</p>
-        </div>
-        <div class="case-study-block">
-          <h4>Outcome</h4>
-          <p>The launch stayed on course, leadership had a clear signal of progress, and critical blockers were resolved before they became business-impacting delays.</p>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="playground" class="reveal">
-  <div class="section-head">
-    <h2>Technical Depth</h2>
-    <p>One artifact that shows how I think about technical execution, not just program coordination.</p>
-  </div>
-  <div class="proof-point">
-    <div class="eyebrow">Proof point</div>
-    <h3>Launch readiness and architecture decision write-up</h3>
-    <ul>
-      <li>I led a structured roadmap that connected business goals, delivery milestones, dependency risks, and rollback criteria.</li>
-      <li>I documented an architecture decision record to clarify tradeoffs across scalability, reliability, and implementation speed.</li>
-      <li>I used SQL for status reporting, Python scripting to automate analysis and checklists, and CI/CD pipelines to reduce manual handoff risk.</li>
-      <li>The result was a clearer operating model for teams and a more credible path to launch with fewer surprises.</li>
-    </ul>
+    </a>
   </div>
 </section>
 
@@ -309,8 +234,7 @@
   <div>
     <h4>MENU</h4>
     <a href="#top">Home</a>
-    <a href="#work">Work</a>
-    <a href="#playground">Playground</a>
+    <a href="#work">Case Study</a>
     <a href="#about">About</a>
   </div>
   <div>
@@ -398,10 +322,12 @@
     document.querySelectorAll('[data-cursor-label]').forEach((el) => {
       el.addEventListener('mouseenter', () => {
         dot.classList.add('is-active');
+        if (el.dataset.cursorVariant === 'project') dot.classList.add('is-project');
         if (label) label.textContent = el.dataset.cursorLabel || 'View';
       });
       el.addEventListener('mouseleave', () => {
         dot.classList.remove('is-active');
+        dot.classList.remove('is-project');
         if (label) label.textContent = '';
       });
     });
