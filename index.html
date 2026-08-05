@@ -54,41 +54,43 @@
   nav a:hover::after{transform:scaleX(1);}
   /* HERO */
   .hero{
-    min-height:100vh;display:flex;align-items:center;padding:90px 8% 40px;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 8% 60px;position:relative;
   }
-  .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;width:100%;}
-  .hero-copy{flex:1 1 480px;max-width:560px;text-align:left;}
-  .hero-photo{flex:0 1 420px;position:relative;display:flex;justify-content:center;align-items:center;}
-  .hero-photo::before{
-    content:'';position:absolute;width:340px;height:340px;border-radius:50%;
-    background:radial-gradient(circle, rgba(124,255,178,0.28) 0%, rgba(124,255,178,0) 70%);
-    filter:blur(4px);z-index:0;
-  }
-  .hero-photo img{position:relative;z-index:1;width:100%;max-width:380px;height:auto;max-height:70vh;object-fit:contain;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,0.5));}
-  .hero h1{font-size:clamp(40px,6.5vw,88px);font-weight:600;letter-spacing:-0.03em;}
+  .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px;width:100%;max-width:760px;margin:0 auto;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);font-size:13px;color:var(--fg);}
+  .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
+  .hero h1{font-size:clamp(32px,5vw,60px);font-weight:600;letter-spacing:-0.03em;line-height:1.2;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero h1 .role-line{display:block;margin-top:6px;}
   .cursor{display:inline-block;width:4px;background:var(--fg);margin-left:6px;animation:blink 0.9s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
-  .hero p{max-width:600px;margin-top:20px;color:var(--muted);font-size:16px;line-height:1.7;}
+  .hero-photo-wrap{position:relative;width:320px;height:320px;margin:0 auto;}
+  .hero-circle{
+    position:absolute;inset:0;border-radius:50%;z-index:0;
+    background:radial-gradient(circle at 32% 28%, #baffdb 0%, var(--accent) 55%, #33c67b 100%);
+  }
+  .hero-cutout{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);z-index:1;width:250px;max-width:66vw;height:auto;display:block;filter:drop-shadow(0 24px 40px rgba(0,0,0,0.45));}
+  .hero-cta{position:relative;z-index:2;display:flex;gap:4px;margin-top:-18px;background:rgba(10,10,10,0.92);border:1px solid rgba(255,255,255,0.12);border-radius:999px;padding:6px;backdrop-filter:blur(8px);}
+  .hero-cta a{padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;color:var(--fg);}
+  .hero-cta a.primary{background:var(--accent);color:#06210f;}
+  .hero-cta a.secondary:hover{background:rgba(255,255,255,0.08);}
+  .hero-side{position:absolute;top:56%;transform:translateY(-50%);max-width:190px;font-size:13px;color:var(--muted);line-height:1.7;text-align:left;}
+  .hero-side-left{left:6%;}
   .scroll-indicator{
-    display:flex;flex-direction:column;align-items:flex-start;gap:10px;
-    margin-top:60px;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:2px;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:2px;
   }
   .scroll-line{position:relative;width:1px;height:60px;background:rgba(255,255,255,0.15);overflow:hidden;}
   .scroll-line::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:#ffffff;animation:dropDown 2s ease-in-out infinite;}
   @keyframes dropDown{0%{top:-100%;}100%{top:100%;}}
-  .spotlight-wrap{position:relative;font-size:1.8rem;line-height:1.5;cursor:none;max-width:760px;margin-top:20px;}
+  @media (max-width:1100px){
+    .hero-side{display:none;}
+  }
   @media (max-width:900px){
     .hero{padding-top:130px;}
-    .hero-inner{flex-direction:column;}
-    .hero-copy{padding-left:0;text-align:center;max-width:100%;}
-    .scroll-indicator{align-items:center;margin-left:auto;margin-right:auto;}
-    .spotlight-wrap{margin-left:auto;margin-right:auto;}
-    .hero-photo{order:-1;margin-bottom:10px;}
-    .hero-photo::before{width:220px;height:220px;}
-    .hero-photo img{max-width:230px;}
+    .hero-photo-wrap{width:220px;height:220px;}
+    .hero-cutout{width:190px;}
   }
-  .text-dim{margin:0;color:rgba(255,255,255,0.25);}
-  .text-bright{position:absolute;top:0;left:0;margin:0;color:#ffffff;pointer-events:none;-webkit-mask-image:radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), black 0%, transparent 100%);mask-image:radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), black 0%, transparent 100%);}
   .cursor-dot{
     position:fixed;top:0;left:0;width:16px;height:16px;border-radius:9999px;
     background:rgba(255,255,255,0.98);border:1px solid rgba(255,255,255,0.7);
@@ -191,20 +193,23 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-copy">
-      <h1 id="typewriter">&nbsp;<span class="cursor"></span></h1>
-      <div class="spotlight-wrap" id="spotlight">
-        <p class="text-dim">I live in the messy middle — turning ambiguity into momentum, aligning teams, and building a path from idea to delivery.</p>
-        <p class="text-bright" aria-hidden="true">I live in the messy middle — turning ambiguity into momentum, aligning teams, and building a path from idea to delivery.</p>
-      </div>
-      <div class="scroll-indicator">
-        <span>SCROLL</span>
-        <div class="scroll-line"></div>
-      </div>
+    <span class="hero-badge">Available for Work</span>
+    <h1>I'm <span class="accent">Rashmith</span>,<span class="role-line" id="typewriter">&nbsp;<span class="cursor"></span></span></h1>
+    <div class="hero-photo-wrap">
+      <div class="hero-circle"></div>
+      <img class="hero-cutout" src="assets/hero-cutout.webp" alt="Rashmith Reddy Podduturi">
     </div>
-    <div class="hero-photo">
-      <img src="assets/hero-photo.webp" alt="Rashmith Reddy Podduturi">
+    <div class="hero-cta">
+      <a class="primary" href="#case-study">View Work</a>
+      <a class="secondary" href="mailto:podduturirashmith@gmail.com?subject=Hello%20Rashmith&body=Hi%20Rashmith,%0A%0A">Contact Me</a>
     </div>
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+  <div class="hero-side hero-side-left">
+    <p>I live in the messy middle — turning ambiguity into momentum, aligning teams, and building a path from idea to delivery.</p>
   </div>
 </section>
 
