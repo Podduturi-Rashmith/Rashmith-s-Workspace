@@ -46,7 +46,8 @@
   .brand-name::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
   .brand:hover .brand-name{transform:scale(1.03);}
   .brand:hover .brand-name::after{transform:scaleX(1);}
-  .avatar{width:36px;height:36px;border-radius:50%;background:#555;position:relative;}
+  .avatar{width:36px;height:36px;border-radius:50%;background:#555;position:relative;overflow:hidden;}
+  .avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
   .avatar::after{content:'';position:absolute;bottom:-2px;right:-2px;width:10px;height:10px;background:#4CD964;border-radius:50%;border:2px solid var(--bg);}
   nav a{color:var(--fg);text-decoration:none;margin-left:20px;font-size:14px;opacity:0.85;position:relative;display:inline-block;padding:6px 0;transition:transform .25s ease, opacity .25s ease;transform-origin:center;}
   nav a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
@@ -125,11 +126,6 @@
     transition:border-color .3s ease, box-shadow .3s ease;
   }
   .case-study-card:hover{border-color:#333;box-shadow:0 24px 60px rgba(0,0,0,0.3);}
-  .case-study-thumb{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#0d0d0d;}
-  .case-study-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transform:scale(1);transition:transform .7s cubic-bezier(.22,1,.36,1);}
-  .case-study-card:hover .case-study-thumb img{transform:scale(1.08);}
-  .case-study-thumb::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .4s ease;}
-  .case-study-card:hover .case-study-thumb::after{background:rgba(0,0,0,0.18);}
   .case-study-info{display:grid;gap:14px;padding:4px 10px 12px;}
   .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);}
   .case-study-info h3{font-size:26px;font-weight:600;}
@@ -157,7 +153,7 @@
 
 <header>
   <div class="brand">
-    <div class="avatar"></div>
+    <div class="avatar"><img src="assets/profile-avatar.png" alt="Rashmith Reddy Podduturi"></div>
     <span class="brand-name">Rashmith Reddy Podduturi</span>
     <div class="brand-links">
       <span class="brand-separator">|</span>
@@ -205,13 +201,9 @@
   <div class="section-head">
     <h2>Case Study</h2>
     <span class="eyebrow-line">Since 2025</span>
-    <p>Selected program and platform work focused on turning ambiguous delivery goals into scalable execution.</p>
   </div>
   <div class="case-study-list">
     <a class="case-study-card" href="Design/real-time-multi-platform-video-integration.html" data-cursor-label="View Project" data-cursor-variant="project">
-      <div class="case-study-thumb">
-        <img src="assets/case-study-video-integration.png" alt="Unified Video Session Service platform architecture" loading="lazy">
-      </div>
       <div class="case-study-info">
         <div class="eyebrow">Engineering Case Study</div>
         <h3>Real-Time Multi-Platform Video Integration</h3>
