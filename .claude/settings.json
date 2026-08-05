@@ -1,7 +1,33 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(git mv *)",
+      "Bash(python3 -m http.server 8098)",
+      "Bash(curl -s -o /dev/null -w \"root: %{http_code}\\\\n\" http://localhost:8098/)",
+      "Bash(curl -s -o /dev/null -w \"assets img: %{http_code}\\\\n\" http://localhost:8098/assets/case-study-video-integration.png)",
+      "Bash(curl -s -o /dev/null -w \"case study page: %{http_code}\\\\n\" http://localhost:8098/Design/real-time-multi-platform-video-integration.html)",
+      "Bash(curl -s -o /dev/null -w \"old stub: %{http_code}\\\\n\" \"http://localhost:8098/My%20Portfolio/Homepage.html\")",
+      "Bash(npx playwright *)",
+      "Bash(npm ls *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8098/)",
+      "Read(//Users/rashmith/Library/Caches/ms-playwright/**)",
+      "Bash(npm root *)",
+      "Bash(find / -maxdepth 6 -iname \"playwright\" -type d)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-rashmith-Documents-GitHub-Rashmith-s-Workspace/0499d8b8-43c4-45cb-b3e4-d70adde8b775/scratchpad/pw)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node -e ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8099/)",
+      "Bash(curl -s http://localhost:8099/)",
+      "Bash(node test.js)",
+      "Bash(pkill -f \"http.server 8099\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8100/)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(node -e \"require\\('playwright'\\)\")"
     ]
   }
 }
