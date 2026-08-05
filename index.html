@@ -54,12 +54,17 @@
   nav a:hover::after{transform:scaleX(1);}
   /* HERO */
   .hero{
-    min-height:100vh;display:flex;align-items:center;padding:90px 0 0 0;overflow:hidden;
+    min-height:100vh;display:flex;align-items:center;padding:90px 8% 40px;
   }
   .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;width:100%;}
-  .hero-copy{flex:1 1 520px;max-width:620px;padding-left:8%;text-align:left;}
-  .hero-photo{flex:1 1 420px;display:flex;justify-content:flex-end;align-self:stretch;align-items:center;}
-  .hero-photo img{width:100%;max-width:560px;height:auto;max-height:78vh;object-fit:cover;object-position:center top;border-radius:32px 0 0 32px;display:block;}
+  .hero-copy{flex:1 1 480px;max-width:560px;text-align:left;}
+  .hero-photo{flex:0 1 420px;position:relative;display:flex;justify-content:center;align-items:center;}
+  .hero-photo::before{
+    content:'';position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle, rgba(124,255,178,0.28) 0%, rgba(124,255,178,0) 70%);
+    filter:blur(4px);z-index:0;
+  }
+  .hero-photo img{position:relative;z-index:1;width:100%;max-width:380px;height:auto;max-height:70vh;object-fit:contain;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,0.5));}
   .hero h1{font-size:clamp(40px,6.5vw,88px);font-weight:600;letter-spacing:-0.03em;}
   .cursor{display:inline-block;width:4px;background:var(--fg);margin-left:6px;animation:blink 0.9s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
@@ -78,8 +83,9 @@
     .hero-copy{padding-left:0;text-align:center;max-width:100%;}
     .scroll-indicator{align-items:center;margin-left:auto;margin-right:auto;}
     .spotlight-wrap{margin-left:auto;margin-right:auto;}
-    .hero-photo{justify-content:center;order:-1;margin-bottom:30px;}
-    .hero-photo img{max-width:280px;border-radius:24px;}
+    .hero-photo{order:-1;margin-bottom:10px;}
+    .hero-photo::before{width:220px;height:220px;}
+    .hero-photo img{max-width:230px;}
   }
   .text-dim{margin:0;color:rgba(255,255,255,0.25);}
   .text-bright{position:absolute;top:0;left:0;margin:0;color:#ffffff;pointer-events:none;-webkit-mask-image:radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), black 0%, transparent 100%);mask-image:radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), black 0%, transparent 100%);}
@@ -197,7 +203,7 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="assets/hero-photo.jpg" alt="Rashmith Reddy Podduturi">
+      <img src="assets/hero-photo.webp" alt="Rashmith Reddy Podduturi">
     </div>
   </div>
 </section>
