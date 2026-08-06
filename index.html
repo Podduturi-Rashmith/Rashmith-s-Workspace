@@ -66,11 +66,6 @@
   @keyframes blink{50%{opacity:0;}}
   .hero-photo-wrap{
     position:relative;width:300px;height:300px;margin:0 auto;
-    -webkit-clip-path:circle(50% at 50% 50%);clip-path:circle(50% at 50% 50%);
-  }
-  .hero-circle{
-    position:absolute;inset:0;border-radius:50%;z-index:0;
-    background:radial-gradient(circle at 32% 28%, #baffdb 0%, var(--accent) 55%, #33c67b 100%);
   }
   .hero-cutout{
     position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;
@@ -205,7 +200,6 @@
     <span class="hero-badge">Available for Work</span>
     <h1>I'm <span class="accent">Rashmith</span>,<span class="role-line" id="typewriter">&nbsp;<span class="cursor"></span></span></h1>
     <div class="hero-photo-wrap">
-      <div class="hero-circle"></div>
       <img class="hero-cutout" src="assets/hero-cutout.webp" alt="Rashmith Reddy Podduturi">
     </div>
     <div class="hero-cta">
