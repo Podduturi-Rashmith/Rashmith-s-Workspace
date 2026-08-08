@@ -11,16 +11,19 @@
 <meta property="og:url" content="https://www.rashmith.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='70' font-family='Arial,sans-serif' font-size='58' font-weight='700' fill='%237CFFB2' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
   :root{
     --bg:#0a0a0a;
-    --fg:#f5f5f5;
+    --fg:#ededed;
     --muted:#9a9a9a;
     --accent:#7CFFB2;
     --card:#141414;
+    --line:#232323;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:auto;}
-  body{background:var(--bg);color:var(--fg);font-family:'Poppins',Arial,sans-serif;overflow-x:hidden;scroll-snap-type:y proximity;}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',Arial,sans-serif;overflow-x:hidden;scroll-snap-type:y proximity;}
+  h1,h2,h3,h4{font-family:'Blinker','Inter',Arial,sans-serif;}
   section,.marquee-wrap,footer{scroll-snap-align:start;scroll-margin-top:100px;}
 
   /* NAV */
@@ -46,8 +49,6 @@
   .brand-name::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
   .brand:hover .brand-name{transform:scale(1.03);}
   .brand:hover .brand-name::after{transform:scaleX(1);}
-  .avatar{width:36px;height:36px;border-radius:50%;background:#555;position:relative;overflow:hidden;}
-  .avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
   nav a{color:var(--fg);text-decoration:none;margin-left:20px;font-size:14px;opacity:0.85;position:relative;display:inline-block;padding:6px 0;transition:transform .25s ease, opacity .25s ease;transform-origin:center;}
   nav a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
   nav a:hover{opacity:1;transform:scale(1.05);}
@@ -64,17 +65,15 @@
   .hero h1 .role-line{display:block;margin-top:6px;}
   .cursor{display:inline-block;width:4px;background:var(--fg);margin-left:6px;animation:blink 0.9s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
-  .hero-photo-wrap{position:relative;width:340px;height:340px;margin:0 auto;}
-  .hero-circle{
-    position:absolute;inset:0;border-radius:50%;z-index:0;
+  .hero-photo-wrap{
+    position:relative;width:340px;height:340px;margin:0 auto;
+    border-radius:50%;overflow:hidden;
     background:radial-gradient(circle at 32% 28%, #baffdb 0%, var(--accent) 55%, #33c67b 100%);
+    box-shadow:0 24px 40px rgba(0,0,0,0.45);
   }
   .hero-cutout{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-46%);z-index:1;
-    width:230px;max-width:64vw;height:auto;display:block;
-    filter:drop-shadow(0 24px 40px rgba(0,0,0,0.45));
-    -webkit-mask-image:linear-gradient(to bottom, black 88%, transparent 100%);
-    mask-image:linear-gradient(to bottom, black 88%, transparent 100%);
+    width:100%;height:100%;display:block;
+    object-fit:cover;object-position:center 18%;
   }
   .hero-cta{position:relative;z-index:2;display:flex;gap:4px;margin-top:-36px;background:rgba(10,10,10,0.92);border:1px solid rgba(255,255,255,0.12);border-radius:999px;padding:6px;backdrop-filter:blur(8px);}
   .hero-cta a{padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;color:var(--fg);}
@@ -82,6 +81,60 @@
   .hero-cta a.secondary:hover{background:rgba(255,255,255,0.08);}
   .hero-side{position:absolute;top:56%;transform:translateY(-50%);max-width:190px;font-size:13px;color:var(--muted);line-height:1.7;text-align:left;}
   .hero-side-left{left:6%;}
+
+  /* SLIDE TO START A CONVERSATION */
+  .slide-cta{
+    position:relative;width:min(360px,86vw);height:60px;margin-top:8px;
+    border-radius:999px;background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.14);overflow:hidden;
+    user-select:none;touch-action:pan-y;cursor:grab;
+  }
+  .slide-cta.dragging{cursor:grabbing;}
+  .slide-cta-fill{position:absolute;inset:0;width:60px;background:linear-gradient(90deg, rgba(124,255,178,0.22), rgba(124,255,178,0.02));pointer-events:none;}
+  .slide-cta.dragging .slide-cta-fill{transition:none;}
+  .slide-cta:not(.dragging) .slide-cta-fill{transition:width .35s cubic-bezier(.22,1,.36,1);}
+  .slide-cta-label{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    padding-left:56px;font-size:14px;font-weight:600;letter-spacing:.02em;
+    background:linear-gradient(90deg, rgba(245,245,245,0.3) 0%, rgba(245,245,245,1) 50%, rgba(245,245,245,0.3) 100%);
+    background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 2.6s linear infinite;pointer-events:none;transition:opacity .25s ease;
+  }
+  .slide-cta.dragging .slide-cta-label,.slide-cta.completed .slide-cta-label{opacity:0;}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .slide-cta-handle{
+    position:absolute;top:4px;left:4px;width:52px;height:52px;border-radius:50%;
+    background:var(--accent);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(124,255,178,0.35);
+  }
+  .slide-cta:not(.dragging) .slide-cta-handle{transition:left .35s cubic-bezier(.22,1,.36,1);}
+  .slide-cta.completed .slide-cta-handle{background:#fff;}
+
+  /* CONVERSATION MODAL */
+  .conv-modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+  .conv-modal.open{opacity:1;pointer-events:auto;}
+  .conv-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);}
+  .conv-modal-card{
+    position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;
+    padding:44px 36px;max-width:420px;width:100%;text-align:center;
+    transform:translateY(16px) scale(.97);transition:transform .3s cubic-bezier(.22,1,.36,1);
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  }
+  .conv-modal.open .conv-modal-card{transform:translateY(0) scale(1);}
+  .conv-modal-close{
+    position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--fg);
+    font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .conv-modal-close:hover{background:rgba(255,255,255,0.14);}
+  .conv-modal-card h3{font-size:26px;font-weight:600;margin-bottom:12px;}
+  .conv-modal-card p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:28px;}
+  .conv-modal-actions{display:flex;flex-direction:column;gap:12px;}
+  .conv-modal-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:999px;font-weight:600;font-size:14.5px;text-decoration:none;transition:transform .2s ease, background .2s ease;}
+  .conv-modal-btn.primary{background:var(--accent);color:#06210f;}
+  .conv-modal-btn.primary:hover{transform:scale(1.02);}
+  .conv-modal-btn.secondary{background:rgba(255,255,255,0.06);color:var(--fg);border:1px solid rgba(255,255,255,0.14);}
+  .conv-modal-btn.secondary:hover{background:rgba(255,255,255,0.12);}
   .scroll-indicator{
     display:flex;flex-direction:column;align-items:center;gap:10px;
     color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:2px;
@@ -95,7 +148,6 @@
   @media (max-width:900px){
     .hero{padding-top:130px;}
     .hero-photo-wrap{width:240px;height:240px;}
-    .hero-cutout{width:162px;}
   }
   .cursor-dot{
     position:fixed;top:0;left:0;width:16px;height:16px;border-radius:9999px;
@@ -128,14 +180,25 @@
   /* INTRO */
   .intro{display:grid;grid-template-columns:1fr 2fr;gap:60px;}
   .intro h2{font-size:40px;font-weight:600;}
-  .intro ul{list-style:none;margin-top:30px;color:var(--muted);}
-  .intro li{margin-bottom:12px;padding-left:16px;border-left:1px solid #333;}
+  .intro-tabs{list-style:none;margin-top:30px;display:flex;flex-direction:column;gap:2px;}
+  .intro-tab{background:none;border:none;text-align:left;color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;padding:12px 0 12px 16px;border-left:1px solid #333;cursor:pointer;transition:color .25s ease,border-color .25s ease;}
+  .intro-tab:hover{color:var(--fg);}
+  .intro-tab.active{color:var(--fg);border-left:1px solid var(--accent);font-weight:600;}
   .intro-card{
     background:var(--card);border-radius:20px;padding:50px;
     background-image:radial-gradient(circle,#2a2a2a 1px,transparent 1px);
     background-size:18px 18px;
   }
-  .intro-card p{font-size:28px;line-height:1.6;color:#ddd;}
+  .intro-card p{font-size:28px;line-height:1.6;color:#ddd;display:none;}
+  .intro-card p.active{display:block;}
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro-tabs{flex-direction:row;flex-wrap:wrap;gap:8px;}
+    .intro-tab{border-left:none;border-bottom:1px solid #333;padding:8px 4px;}
+    .intro-tab.active{border-left:none;border-bottom:1px solid var(--accent);}
+    .intro-card{padding:32px;}
+    .intro-card p{font-size:21px;}
+  }
 
   /* CARDS / WORK */
   .section-head{margin-bottom:50px;}
@@ -144,22 +207,38 @@
   .eyebrow-line{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
   .eyebrow-line::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
 
-  .case-study-list{display:grid;gap:20px;}
+  .case-study-list{display:grid;gap:0;border-top:1px solid var(--line);}
   .case-study-card{
-    display:grid;gap:28px;text-decoration:none;color:inherit;
-    background:var(--card);border:1px solid #232323;border-radius:24px;padding:20px;
-    box-shadow:0 16px 40px rgba(0,0,0,0.18);
-    transition:border-color .3s ease, box-shadow .3s ease;
+    display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:28px;
+    text-decoration:none;color:inherit;padding:36px 8px;
+    border-bottom:1px solid var(--line);
+    transition:padding-left .3s ease, opacity .3s ease;
   }
-  .case-study-card:hover{border-color:#333;box-shadow:0 24px 60px rgba(0,0,0,0.3);}
-  .case-study-info{display:grid;gap:14px;padding:4px 10px 12px;}
+  .case-study-card:hover{padding-left:20px;}
+  .case-study-card:hover .case-study-arrow{transform:translate(4px,-4px);opacity:1;}
+  .case-study-num{font-family:'Blinker',sans-serif;font-size:15px;color:var(--muted);}
+  .case-study-info{display:grid;gap:12px;}
   .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);}
   .case-study-info h3{font-size:26px;font-weight:600;}
   .case-study-info p{color:var(--muted);line-height:1.7;font-size:15px;max-width:640px;}
   .case-study-tags{display:flex;gap:10px;flex-wrap:wrap;}
   .case-study-tag{border:1px solid #333;border-radius:999px;padding:8px 16px;font-size:13px;opacity:0.85;}
+  .case-study-arrow{font-size:22px;color:var(--fg);opacity:0.6;transition:transform .3s ease, opacity .3s ease;}
+  @media (max-width:700px){
+    .case-study-card{grid-template-columns:1fr;gap:14px;}
+    .case-study-arrow{display:none;}
+  }
 
+  /* PLAYGROUND */
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .playground-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+  .playground-tile{
+    border:1px dashed #333;border-radius:20px;padding:36px 24px;min-height:180px;
+    display:flex;flex-direction:column;justify-content:flex-end;gap:8px;color:var(--muted);
+  }
+  .playground-tile .eyebrow{color:var(--muted);}
+  .playground-tile h3{font-size:18px;font-weight:600;color:var(--fg);}
+  .playground-tile p{font-size:14px;line-height:1.6;}
 
   /* CTA */
   .cta{text-align:center;}
@@ -179,7 +258,6 @@
 
 <header>
   <div class="brand">
-    <div class="avatar"><img src="assets/profile-avatar.png" alt="Rashmith Reddy Podduturi"></div>
     <span class="brand-name">Rashmith Reddy Podduturi</span>
     <div class="brand-links">
       <span class="brand-separator">|</span>
@@ -192,7 +270,8 @@
     </div>
   </div>
   <nav>
-    <a href="#case-study">Case Study</a>
+    <a href="#case-study">Featured Work</a>
+    <a href="#playground">Playground</a>
     <a href="#about">About</a>
   </nav>
 </header>
@@ -207,7 +286,14 @@
     </div>
     <div class="hero-cta">
       <a class="primary" href="#case-study">View Work</a>
-      <a class="secondary" href="mailto:podduturirashmith@gmail.com?subject=Hello%20Rashmith&body=Hi%20Rashmith,%0A%0A">Contact Me</a>
+      <a class="secondary" href="#about">About Me</a>
+    </div>
+    <div class="slide-cta" id="slideCta" role="slider" tabindex="0" aria-label="Slide to start a conversation">
+      <div class="slide-cta-fill" id="slideFill"></div>
+      <span class="slide-cta-label">Slide to start a conversation</span>
+      <div class="slide-cta-handle" id="slideHandle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#06210f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
     </div>
     <div class="scroll-indicator">
       <span>SCROLL</span>
@@ -226,20 +312,30 @@
 <section class="intro reveal">
   <div>
     <h2>Intro</h2>
+    <div class="intro-tabs" id="introTabs" role="tablist">
+      <button class="intro-tab active" data-tab="anyone" role="tab" aria-selected="true">For Anyone</button>
+      <button class="intro-tab" data-tab="recruiters" role="tab" aria-selected="false">Recruiters</button>
+      <button class="intro-tab" data-tab="engineers" role="tab" aria-selected="false">Engineering Teams</button>
+      <button class="intro-tab" data-tab="leaders" role="tab" aria-selected="false">Product Leaders</button>
+    </div>
   </div>
-  <div class="intro-card">
-    <p>I’m a Technical Program Manager who’s spent years turning ambiguity into shipped systems — across AI pipelines, streaming platforms, and cloud infrastructure. I care about craft, speed, and teams that trust each other — and I’m open to the right role.</p>
+  <div class="intro-card" id="introCard">
+    <p class="active" data-tab="anyone">I’m a Technical Program Manager who’s spent years turning ambiguity into shipped systems — across AI pipelines, streaming platforms, and cloud infrastructure. I care about craft, speed, and teams that trust each other — and I’m open to the right role.</p>
+    <p data-tab="recruiters">I run point on programs that ship — video platforms, AI pipelines, cloud migrations — from ambiguous scope to production. Open to full-time Technical Program Manager or Program Lead roles, remote or based in Ohio.</p>
+    <p data-tab="engineers">I don’t manage tickets — I clear the path. Fewer standups, sharper scope, and enough technical fluency to know when a “blocker” actually is one, so you can stay heads-down on the work that matters.</p>
+    <p data-tab="leaders">I turn roadmaps into shipped milestones — aligning engineering, design, and vendors around one plan, with the risk log updated before it becomes your problem.</p>
   </div>
 </section>
 
 
 <section id="case-study" class="reveal">
   <div class="section-head">
-    <h2>Case Study</h2>
+    <h2>Featured Work</h2>
     <span class="eyebrow-line">Since 2025</span>
   </div>
   <div class="case-study-list">
     <a class="case-study-card" href="Design/real-time-multi-platform-video-integration.html" data-cursor-label="View Project" data-cursor-variant="project">
+      <span class="case-study-num">01</span>
       <div class="case-study-info">
         <div class="eyebrow">Engineering Case Study</div>
         <h3>Real-Time Multi-Platform Video Integration</h3>
@@ -250,7 +346,23 @@
           <span class="case-study-tag">Cross-Functional Delivery</span>
         </div>
       </div>
+      <span class="case-study-arrow">↗</span>
     </a>
+  </div>
+</section>
+
+<section id="playground" class="reveal">
+  <div class="section-head">
+    <h2>Playground</h2>
+    <span class="eyebrow-line">Since 2026</span>
+    <p>Process artifacts, templates, and tools I build to make delivery faster — shaped by curiosity and fast iteration.</p>
+  </div>
+  <div class="playground-grid">
+    <div class="playground-tile">
+      <div class="eyebrow">In Progress</div>
+      <h3>Work in Progress</h3>
+      <p>New frameworks and tools are being written up — check back soon.</p>
+    </div>
   </div>
 </section>
 
@@ -262,7 +374,8 @@
   <div>
     <h4>MENU</h4>
     <a href="#top">Home</a>
-    <a href="#case-study">Case Study</a>
+    <a href="#case-study">Featured Work</a>
+    <a href="#playground">Playground</a>
     <a href="#about">About</a>
   </div>
   <div>
@@ -281,6 +394,19 @@
   </div>
 </footer>
 
+<div class="conv-modal" id="convModal" aria-hidden="true">
+  <div class="conv-modal-backdrop" id="convModalBackdrop"></div>
+  <div class="conv-modal-card" role="dialog" aria-modal="true" aria-labelledby="convModalTitle">
+    <button class="conv-modal-close" id="convModalClose" aria-label="Close">×</button>
+    <h3 id="convModalTitle">Let's Connect</h3>
+    <p>Whatever's easier for you — find a time on my calendar, or just give me a call.</p>
+    <div class="conv-modal-actions">
+      <a class="conv-modal-btn primary" href="https://calendar.app.google/i2q844iZrfsrThsq6" target="_blank" rel="noopener noreferrer">📅 Find a Time on My Calendar</a>
+      <a class="conv-modal-btn secondary" href="tel:+15672718934">📞 Call Me Directly</a>
+    </div>
+  </div>
+</div>
+
 <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
 <script>
   const lenis = new Lenis({
@@ -296,7 +422,7 @@
   }
   requestAnimationFrame(raf);
   // Typewriter effect
-  const words = ["Technical Program Manager", "System Architecture", "AI/ML Workflows", "Agile Delivery", "Product Operations", "Cross-Functional Leadership", "Platform Scaling"];
+  const words = ["Technical Program Manager", "AI Delivery Lead"];
   const el = document.getElementById('typewriter');
   let wi = 0, ci = 0, deleting = false;
   function type(){
@@ -365,6 +491,88 @@
     document.addEventListener('DOMContentLoaded', initCustomCursor);
   } else {
     initCustomCursor();
+  }
+
+  // "Let's Connect" popup — opened once the slide gesture completes
+  const convModal = document.getElementById('convModal');
+  const openModal = () => { convModal.classList.add('open'); convModal.setAttribute('aria-hidden', 'false'); };
+  const closeModal = () => { convModal.classList.remove('open'); convModal.setAttribute('aria-hidden', 'true'); };
+  document.getElementById('convModalBackdrop').addEventListener('click', closeModal);
+  document.getElementById('convModalClose').addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  convModal.querySelectorAll('.conv-modal-btn').forEach((a) => a.addEventListener('click', () => setTimeout(closeModal, 200)));
+
+  // Slide to start a conversation (iOS slide-to-unlock style)
+  const slideCta = document.getElementById('slideCta');
+  const slideHandle = document.getElementById('slideHandle');
+  const slideFill = document.getElementById('slideFill');
+  if (slideCta && slideHandle && slideFill) {
+    const HANDLE = 52, PAD = 4;
+    let dragging = false, startX = 0, startLeft = PAD, maxLeft = 0;
+
+    const setHandle = (left) => {
+      slideHandle.style.left = left + 'px';
+      slideFill.style.width = (left + HANDLE) + 'px';
+    };
+    const complete = () => {
+      slideCta.classList.add('completed');
+      setHandle(maxLeft);
+      setTimeout(() => {
+        openModal();
+        setTimeout(() => { slideCta.classList.remove('completed'); setHandle(PAD); }, 250);
+      }, 150);
+    };
+    const reset = () => { if (!slideCta.classList.contains('completed')) setHandle(PAD); };
+
+    const onDown = (x) => {
+      maxLeft = slideCta.clientWidth - HANDLE - PAD;
+      dragging = true; startX = x; startLeft = parseFloat(slideHandle.style.left) || PAD;
+      slideCta.classList.add('dragging');
+    };
+    const onMove = (x) => {
+      if (!dragging) return;
+      const left = Math.min(Math.max(startLeft + (x - startX), PAD), maxLeft);
+      setHandle(left);
+    };
+    const onUp = () => {
+      if (!dragging) return;
+      dragging = false;
+      slideCta.classList.remove('dragging');
+      const left = parseFloat(slideHandle.style.left) || PAD;
+      if (left >= maxLeft * 0.82) complete(); else reset();
+    };
+
+    slideHandle.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      try { slideHandle.setPointerCapture(e.pointerId); } catch (err) {}
+      onDown(e.clientX);
+    });
+    slideHandle.addEventListener('pointermove', (e) => onMove(e.clientX));
+    slideHandle.addEventListener('pointerup', onUp);
+    slideHandle.addEventListener('pointercancel', onUp);
+    slideCta.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); complete(); }
+    });
+    window.addEventListener('resize', () => { if (!dragging) reset(); });
+  }
+
+  // Intro tabs
+  const introTabs = document.getElementById('introTabs');
+  const introCard = document.getElementById('introCard');
+  if (introTabs && introCard) {
+    introTabs.addEventListener('click', (e) => {
+      const btn = e.target.closest('.intro-tab');
+      if (!btn) return;
+      const tab = btn.dataset.tab;
+      introTabs.querySelectorAll('.intro-tab').forEach(t => {
+        const isActive = t === btn;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      introCard.querySelectorAll('p').forEach(p => {
+        p.classList.toggle('active', p.dataset.tab === tab);
+      });
+    });
   }
 
   // Scroll reveal
