@@ -65,15 +65,38 @@
   .hero h1 .role-line{display:block;margin-top:6px;}
   .cursor{display:inline-block;width:4px;background:var(--fg);margin-left:6px;animation:blink 0.9s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
-  .hero-photo-wrap{
-    position:relative;width:340px;height:340px;margin:0 auto;
-    border-radius:50%;overflow:hidden;
+  /* HERO ORB */
+  .hero-orb-wrap{position:relative;width:280px;height:280px;margin:0 auto;}
+  .hero-orb{
+    position:absolute;inset:0;border-radius:50%;
     background:radial-gradient(circle at 32% 28%, #baffdb 0%, var(--accent) 55%, #33c67b 100%);
-    box-shadow:0 24px 40px rgba(0,0,0,0.45);
+    box-shadow:0 24px 60px rgba(124,255,178,0.25);
+    animation:orbPulse 4.5s ease-in-out infinite;
   }
-  .hero-cutout{
-    width:100%;height:100%;display:block;
-    object-fit:cover;object-position:center 18%;
+  @keyframes orbPulse{
+    0%,100%{transform:scale(1);box-shadow:0 24px 60px rgba(124,255,178,0.25);}
+    50%{transform:scale(1.035);box-shadow:0 30px 80px rgba(124,255,178,0.4);}
+  }
+  .hero-orb-ring{position:absolute;inset:-20px;border-radius:50%;border:1px dashed rgba(124,255,178,0.35);animation:spin 34s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .hero-orb-ring::before,.hero-orb-ring::after{content:'';position:absolute;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(124,255,178,0.85);}
+  .hero-orb-ring::before{top:-4px;left:50%;margin-left:-4px;}
+  .hero-orb-ring::after{bottom:8%;right:-4px;}
+  .hero-float-badge{
+    position:absolute;display:flex;align-items:center;gap:8px;z-index:2;
+    padding:10px 16px;border-radius:999px;white-space:nowrap;
+    background:rgba(20,20,20,0.85);border:1px solid rgba(255,255,255,0.14);
+    backdrop-filter:blur(8px);font-size:13px;font-weight:600;color:var(--fg);
+    box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    animation:floatY 5s ease-in-out infinite;
+  }
+  .hero-float-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
+  .hero-float-badge.badge-1{top:2%;right:-6%;animation-delay:0s;}
+  .hero-float-badge.badge-2{bottom:6%;left:-10%;animation-delay:1.6s;}
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  @media (max-width:640px){
+    .hero-float-badge.badge-1{top:-6%;right:4%;}
+    .hero-float-badge.badge-2{bottom:-4%;left:4%;}
   }
   .hero-cta{position:relative;z-index:2;display:flex;gap:4px;margin-top:-36px;background:rgba(10,10,10,0.92);border:1px solid rgba(255,255,255,0.12);border-radius:999px;padding:6px;backdrop-filter:blur(8px);}
   .hero-cta a{padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;color:var(--fg);}
@@ -147,7 +170,7 @@
   }
   @media (max-width:900px){
     .hero{padding-top:130px;}
-    .hero-photo-wrap{width:240px;height:240px;}
+    .hero-orb-wrap{width:220px;height:220px;}
   }
   .cursor-dot{
     position:fixed;top:0;left:0;width:16px;height:16px;border-radius:9999px;
@@ -163,17 +186,29 @@
   .cursor-dot.is-active .cursor-label{opacity:1;}
   .cursor-dot.is-project{width:150px;height:150px;background:rgba(10,10,10,0.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);box-shadow:0 0 0 1px rgba(255,255,255,0.05),0 20px 60px rgba(0,0,0,0.45);}
   .cursor-dot.is-project .cursor-label{color:#ffffff;font-size:14px;letter-spacing:0.06em;white-space:normal;text-align:center;line-height:1.4;max-width:110px;}
+  .cursor-dot.is-project.has-image{width:200px;height:140px;border-radius:20px;background-size:cover;background-position:center;}
+  .cursor-dot.is-project.has-image::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(180deg, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.88) 100%);}
+  .cursor-dot.is-project.has-image .cursor-label{position:relative;max-width:170px;font-size:13px;}
   body.has-custom-cursor{cursor:none;}
   /* MARQUEE */
   .marquee-wrap{overflow:hidden;background:var(--accent);color:#000;padding:22px 0;white-space:nowrap;}
+  .marquee-parallax{display:inline-block;will-change:transform;}
   .marquee{display:inline-flex;animation:scroll 22s linear infinite;}
   .marquee-wrap:hover .marquee{animation-play-state:paused;}
   .marquee span{font-size:32px;font-weight:600;margin:0 30px;}
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
   /* REVEAL */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out, transform .6s ease-out;}
-  .reveal.visible{opacity:1;transform:translateY(0);}
+  .reveal{opacity:0;transform:translateY(24px) scale(.985);transition:opacity .7s ease-out, transform .7s ease-out;}
+  .reveal.visible{opacity:1;transform:translateY(0) scale(1);}
+  .reveal-item{opacity:0;transform:translateY(16px);transition:opacity .5s ease-out, transform .5s ease-out;}
+  .reveal.visible .reveal-item{opacity:1;transform:translateY(0);}
+  .reveal.visible .reveal-item[data-stagger="1"]{transition-delay:.05s;}
+  .reveal.visible .reveal-item[data-stagger="2"]{transition-delay:.12s;}
+  .reveal.visible .reveal-item[data-stagger="3"]{transition-delay:.19s;}
+  .reveal.visible .reveal-item[data-stagger="4"]{transition-delay:.26s;}
+  .reveal.visible .reveal-item[data-stagger="5"]{transition-delay:.33s;}
+  .reveal.visible .reveal-item[data-stagger="6"]{transition-delay:.40s;}
 
   section{padding:120px 8%;}
 
@@ -233,10 +268,22 @@
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
   .playground-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
   .playground-tile{
+    position:relative;overflow:hidden;
     border:1px dashed #333;border-radius:20px;padding:36px 24px;min-height:180px;
     display:flex;flex-direction:column;justify-content:flex-end;gap:8px;color:var(--muted);
+    transform:perspective(700px) rotateX(0deg) rotateY(0deg);
+    transition:transform .4s cubic-bezier(.22,1,.36,1), border-color .3s ease;
+    will-change:transform;
   }
-  .playground-tile .eyebrow{color:var(--muted);}
+  .playground-tile:hover{border-color:#4a4a4a;}
+  .playground-tile-spotlight{
+    position:absolute;inset:0;pointer-events:none;opacity:0;
+    background:radial-gradient(220px circle at var(--sx,50%) var(--sy,50%), rgba(124,255,178,0.16), transparent 70%);
+    transition:opacity .3s ease;
+  }
+  .playground-tile:hover .playground-tile-spotlight{opacity:1;}
+  .playground-tile .eyebrow{color:var(--muted);position:relative;}
+  .playground-tile h3, .playground-tile p{position:relative;}
   .playground-tile h3{font-size:18px;font-weight:600;color:var(--fg);}
   .playground-tile p{font-size:14px;line-height:1.6;}
 
@@ -280,9 +327,11 @@
   <div class="hero-inner">
     <span class="hero-badge">Available for Work</span>
     <h1>I'm <span class="accent">Rashmith</span>,<span class="role-line" id="typewriter">&nbsp;<span class="cursor"></span></span></h1>
-    <div class="hero-photo-wrap">
-      <div class="hero-circle"></div>
-      <img class="hero-cutout" src="assets/hero-cutout.webp" alt="Rashmith Reddy Podduturi">
+    <div class="hero-orb-wrap">
+      <div class="hero-orb-ring"></div>
+      <div class="hero-orb"></div>
+      <div class="hero-float-badge badge-1"><span class="dot"></span>AI Pipelines</div>
+      <div class="hero-float-badge badge-2"><span class="dot"></span>Streaming Platforms</div>
     </div>
     <div class="hero-cta">
       <a class="primary" href="#case-study">View Work</a>
@@ -306,7 +355,9 @@
 </section>
 
 <div class="marquee-wrap">
-  <div class="marquee" id="marquee"></div>
+  <div class="marquee-parallax" id="marqueeParallax">
+    <div class="marquee" id="marquee"></div>
+  </div>
 </div>
 
 <section class="intro reveal">
@@ -330,35 +381,36 @@
 
 <section id="case-study" class="reveal">
   <div class="section-head">
-    <h2>Featured Work</h2>
-    <span class="eyebrow-line">Since 2025</span>
+    <h2 class="reveal-item" data-stagger="1">Featured Work</h2>
+    <span class="eyebrow-line reveal-item" data-stagger="2">Since 2025</span>
   </div>
   <div class="case-study-list">
-    <a class="case-study-card" href="Design/real-time-multi-platform-video-integration.html" data-cursor-label="View Project" data-cursor-variant="project">
-      <span class="case-study-num">01</span>
+    <a class="case-study-card" href="Design/real-time-multi-platform-video-integration.html" data-cursor-label="View Project" data-cursor-variant="project" data-cursor-image="assets/case-study-video-integration.png">
+      <span class="case-study-num reveal-item" data-stagger="1">01</span>
       <div class="case-study-info">
-        <div class="eyebrow">Engineering Case Study</div>
-        <h3>Real-Time Multi-Platform Video Integration</h3>
-        <p>Unifying playback, licensing, and session logic across web, native, CTV, and partner embeds into one shared platform layer.</p>
-        <div class="case-study-tags">
+        <div class="eyebrow reveal-item" data-stagger="2">Engineering Case Study</div>
+        <h3 class="reveal-item" data-stagger="3">Real-Time Multi-Platform Video Integration</h3>
+        <p class="reveal-item" data-stagger="4">Unifying playback, licensing, and session logic across web, native, CTV, and partner embeds into one shared platform layer.</p>
+        <div class="case-study-tags reveal-item" data-stagger="5">
           <span class="case-study-tag">Program Management</span>
           <span class="case-study-tag">Streaming Platform</span>
           <span class="case-study-tag">Cross-Functional Delivery</span>
         </div>
       </div>
-      <span class="case-study-arrow">↗</span>
+      <span class="case-study-arrow reveal-item" data-stagger="6">↗</span>
     </a>
   </div>
 </section>
 
 <section id="playground" class="reveal">
   <div class="section-head">
-    <h2>Playground</h2>
-    <span class="eyebrow-line">Since 2026</span>
-    <p>Process artifacts, templates, and tools I build to make delivery faster — shaped by curiosity and fast iteration.</p>
+    <h2 class="reveal-item" data-stagger="1">Playground</h2>
+    <span class="eyebrow-line reveal-item" data-stagger="2">Since 2026</span>
+    <p class="reveal-item" data-stagger="3">Process artifacts, templates, and tools I build to make delivery faster — shaped by curiosity and fast iteration.</p>
   </div>
   <div class="playground-grid">
-    <div class="playground-tile">
+    <div class="playground-tile" id="playgroundTile">
+      <div class="playground-tile-spotlight" id="playgroundSpotlight"></div>
       <div class="eyebrow">In Progress</div>
       <h3>Work in Progress</h3>
       <p>New frameworks and tools are being written up — check back soon.</p>
@@ -416,8 +468,15 @@
     smoothTouch: false,
   });
 
+  const marqueeParallax = document.getElementById('marqueeParallax');
+  let marqueeOffset = 0;
   function raf(time) {
     lenis.raf(time);
+    if (marqueeParallax) {
+      const targetOffset = Math.max(-50, Math.min(50, (lenis.velocity || 0) * -2));
+      marqueeOffset += (targetOffset - marqueeOffset) * 0.15;
+      marqueeParallax.style.transform = `translateX(${marqueeOffset.toFixed(2)}px)`;
+    }
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
@@ -477,11 +536,17 @@
       el.addEventListener('mouseenter', () => {
         dot.classList.add('is-active');
         if (el.dataset.cursorVariant === 'project') dot.classList.add('is-project');
+        if (el.dataset.cursorImage) {
+          dot.classList.add('has-image');
+          dot.style.backgroundImage = `url('${el.dataset.cursorImage}')`;
+        }
         if (label) label.textContent = el.dataset.cursorLabel || 'View';
       });
       el.addEventListener('mouseleave', () => {
         dot.classList.remove('is-active');
         dot.classList.remove('is-project');
+        dot.classList.remove('has-image');
+        dot.style.backgroundImage = '';
         if (label) label.textContent = '';
       });
     });
@@ -554,6 +619,27 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); complete(); }
     });
     window.addEventListener('resize', () => { if (!dragging) reset(); });
+  }
+
+  // Playground tile — tilt-toward-cursor + spotlight
+  const playgroundTile = document.getElementById('playgroundTile');
+  const playgroundSpotlight = document.getElementById('playgroundSpotlight');
+  if (playgroundTile) {
+    playgroundTile.addEventListener('mousemove', (e) => {
+      const rect = playgroundTile.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      const rotateY = (px - 0.5) * 14;
+      const rotateX = (0.5 - py) * 14;
+      playgroundTile.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      if (playgroundSpotlight) {
+        playgroundSpotlight.style.setProperty('--sx', `${px * 100}%`);
+        playgroundSpotlight.style.setProperty('--sy', `${py * 100}%`);
+      }
+    });
+    playgroundTile.addEventListener('mouseleave', () => {
+      playgroundTile.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg)';
+    });
   }
 
   // Intro tabs
